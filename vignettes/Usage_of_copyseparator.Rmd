@@ -1,0 +1,19 @@
+---
+title: "Usage_of_copyseparator"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Usage_of_copyseparator}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(copyseparator)
+```
