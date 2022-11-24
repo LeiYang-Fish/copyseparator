@@ -13,8 +13,8 @@ Depends:
 Encoding: UTF-8
 LazyData: TRUE
 Imports:
-  ape, seqinr, stringr, kmer, DECIPHER, beepr, Biostrings, grDevices
-RoxygenNote: 7.1.2
+  ape, seqinr, stringr, kmer, DECIPHER, beepr, Biostrings, grDevices, doParallel, foreach, parallel
+RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,

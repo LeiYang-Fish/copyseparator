@@ -2,8 +2,6 @@
 #'
 #' @description Separates two or more gene copies from short-read Next-Generation Sequencing data into a small number of overlapping DNA sequences and assemble them into their respective gene copies.
 #'
-#' @param filename A fasta file contains thousands of short reads that have been mapped to a reference. The reference and reads that are not directly mapped to the reference need to be removed after mapping.
-#'
 #' @param copy_number An integer (e.g. 2,3, or 4) giving the anticipated number of gene copies in the input file.
 #'
 #' @param read_length An integer (e.g. 250, or 300) giving the read length of your Next-generation Sequencing data. This method is designed for read length >=250bp.
@@ -11,6 +9,8 @@
 #' @param overlap An integer describing number of base pairs of overlap between adjacent subsets. More overlap means more subsets. Default 225.
 #'
 #' @param rare_read A positive integer. During clustering analyses, clusters with less than this number of reads will be ignored. Default 10.
+#'
+#' @param core_number An integer describing number of cores to use.
 #'
 #' @param verbose Turn on (verbose=1; default) or turn off (verbose=0) the output.
 #'
@@ -28,23 +28,23 @@
 #'
 #' @importFrom DECIPHER ConsensusSequence RemoveGaps
 #'
-#' @importFrom foreach foreach
+#' @importFrom foreach foreach %dopar%
 #'
 #' @importFrom parallel makeCluster
 #'
 #' @importFrom doParallel registerDoParallel
-#' 
+#'
 #' @importFrom beepr beep
 #'
 #' @examples
 #' \dontrun{
-#' sep_assem("inst/extdata/toydata.fasta",2,300,225,10,1,1)
+#' sep_assem(2,300,225,10,1,1) # all input fasta files in the working directory will be processed
 #' }
 #'
 #' @export sep_assem
 #'
 
-sep_assem<-function(filename,copy_number,read_length,overlap=225, rare_read=10, core_number=1, verbose=1)
+sep_assem<-function(copy_number,read_length,overlap=225, rare_read=10, core_number=1, verbose=1)
 {
 for (filename in list.files(pattern=".fasta")) {
 
@@ -62,6 +62,8 @@ error_log_function <- function() {
 if (copy_number<=1) stop ("The anticipated copy number must be a number larger than one!")
 
 if (read_length<250) warning ("This method is designed for read length 250bp or longer. Short reads can easily result in chimeric sequences.")
+
+cat(paste0("## Begin analyses on: ",filename,"\n"))
 
 NGSreads <- seqinr::read.fasta(file = filename,seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE)
 
@@ -85,8 +87,8 @@ To_subset <- function(i) {
   seqinr::write.fasta(sequences = subset_smallest, names = 1:length(subset_smallest), file.out = paste0("Subset_",which(begin_number==i),"_downsized.fasta"))
 }
 
-invisible(foreach::foreach(x = begin_number) %dopar% {
-  To_subset(x)
+invisible(foreach::foreach(q = begin_number) %dopar% {
+  To_subset(q)
 })
 
 Subsets <- stringr::str_sort(list.files(pattern="_downsized.fasta"), numeric = TRUE)
@@ -112,7 +114,7 @@ OTU_subset <- function (i) {
     Subset_OTU <- kmer::otu(Sub_set, k = 5, threshold = m, method = "central", nstart = 20)
     if (length(unique(Subset_OTU))>=copy_number) {break}
   }
-  
+
   # try different threshold values in the range found above
   if (length(unique(Subset_OTU))>copy_number) {
     for (j in seq(m-0.09,m, by = 0.01)) {
@@ -138,8 +140,8 @@ OTU_subset <- function (i) {
 }
 
 # for each of the subset_1, 2, 3...
-invisible(foreach::foreach(x = setdiff(1:length(Subsets), empty_subset)) %dopar% {
- OTU_subset(x)
+invisible(foreach::foreach(i=setdiff(1:length(Subsets), empty_subset)) %dopar% {
+ OTU_subset(i)
 })
 
 if (verbose) {cat("Clustering analyses finished\n")}
@@ -328,7 +330,8 @@ seqinr::write.fasta(sequences = all_copies_final, names(all_copies_final),file.o
 
 ## Remove shared gaps in the final gene copies
 DNAbin <- Biostrings::readDNAStringSet("All_copies_final.fasta")
-seqinr::write.fasta(sequences = lapply(1:length(DNAbin), function(x) paste0(c(as.character(DNAbin[x][[1]]), as.character(rep("-",max(nchar(DNAbin))-nchar(DNAbin)[x]))), collapse='')),
+longest_seq <- max(as.numeric(lapply(1:length(DNAbin), function(x) length(DNAbin[[x]]))))
+seqinr::write.fasta(sequences = lapply(1:length(DNAbin), function(x) paste0(c(as.character(DNAbin[x][[1]]), as.character(rep("-",longest_seq-length(DNAbin[[x]])))), collapse='')),
                     names = names(DNAbin), file.out = "All_copies_same_length_final.fasta")
 All_copies_final <- DECIPHER::RemoveGaps(Biostrings::readDNAStringSet("All_copies_same_length_final.fasta", format="fasta"),removeGaps = "common")
 Biostrings::writeXStringSet(All_copies_final, paste0(filename_short, "_assembled_", copy_number, "_gene_copies.txt"))
@@ -337,6 +340,7 @@ unlink("*_final.fasta")
 if (verbose) { cat("*************************************************************************\n")}
 cat("Run finished!\n")
 cat("Please check '*_subseqs.fasta' files to see if sequences have been linked correctly. Pay attention to nucleotide overhangs introduced by mistakes.\n")
+cat("\n\n\n")
 
 # Move the input data and all intermediate and resulting files into a single newly created folder
 dir.create(paste0("--- Results_", filename_short))
@@ -349,4 +353,5 @@ beepr::beep(sound = 1, expr = NULL) # make a sound when run finishes
 options("error" = error_log_function)
 sink() # turn off log
 
+ }
 }

@@ -1,3 +1,7 @@
+# copyseparator 1.2.0
+- sep_assem can now process multiple input files placed in the working folder one by one.
+- Added a new parameter "core_number" for sep_assem. It can now run using multiple CPU cores and the run can be much faster.
+
 # copyseparator 1.1.0
 
 - Added a new parameter "rare_read" for copy_separate. During clustering analyses, clusters with less than this number of reads will be ignored. Default 10.
@@ -7,7 +11,7 @@
 - The input file for copy_assemble will be re-ordered to make sure the sequences are in the correct order (just in case that someone may have edited it).
 - Remove the end part of a sequence if it contains too many ambiguous sites, which will otherwise affects the performance of copy_assemble.
 - The shared gaps in the assembled final gene copy sequences will be removed.
-- Added the new function sep_assem, which is a combination of copy_separate and copy_assemble. Now you can get the assembled final gene copy sequences by only running sep_assem. Only when the results are not satisfying, you can come back to make necessary changes and run coy_separate again.
+- Added the new function sep_assem, which is a combination of copy_separate and copy_assemble. Now you can get the assembled final gene copy sequences by only running sep_assem. Only when the results are not satisfying, you can come back to make necessary changes and run copy_assemble again.
 - The input file and all resulting files will now be put in a single result folder. When you run multiple files one after another in a loop, the results will not be messed up.
 
 # copyseparator 1.0.0
