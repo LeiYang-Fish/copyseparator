@@ -42,7 +42,7 @@ if (copy_number<=1) stop ("The anticipated copy number must be a number larger t
 # Define a function to count the total number of ambiguous sites in an alignment
 ambiguity_count <- function(x){
   sum(as.integer(stringr::str_count(as.character(DECIPHER::ConsensusSequence(Biostrings::readDNAStringSet(x, format="fasta",nrec=-1L, skip=0L),
-                                    threshold = 0.4,ambiguity = TRUE, minInformation=0.8, noConsensusChar = "N")), c("M", "K", "R", "Y","N","W", "S", "H", "V", "D", "B"))))
+                                    threshold = 0.4,ambiguity = TRUE, minInformation=0.6, noConsensusChar = "N")), c("M", "K", "R", "Y","N","W", "S", "H", "V", "D", "B"))))
   }
 
 Consensus_seq_org <- seqinr::read.fasta(file = filename,seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE)
@@ -213,14 +213,15 @@ for (i in 1:copy_number) {
   copy_subseqs_name <- lapply(as.numeric(unlist(Copy_list[i])), function(x) names(Consensus_seq_reduced[x]))
   seqinr::write.fasta(sequences = copy_subseqs, copy_subseqs_name,file.out=paste0(filename_short, "_Copy_",i,"_subseqs.fasta"))
   seqinr::write.fasta(sequences = as.character(DECIPHER::ConsensusSequence(Biostrings::readDNAStringSet(paste0(filename_short, "_Copy_",i,"_subseqs.fasta"), format="fasta",nrec=-1L, skip=0L),
-                                  threshold = 0.4,ambiguity = TRUE, minInformation=0.8, noConsensusChar = "N")), paste0("Copy_",i,"_final"),file.out=paste0("Copy_",i,"_final.fasta"))
+                                  threshold = 0.4,ambiguity = TRUE, minInformation=0.6, noConsensusChar = "N")), paste0("Copy_",i,"_final"),file.out=paste0("Copy_",i,"_final.fasta"))
   all_copies_final <- append(all_copies_final, seqinr::read.fasta (paste0("Copy_",i,"_final.fasta"), seqtype = "DNA", as.string = TRUE,forceDNAtolower = FALSE,set.attributes = FALSE))
 }
 seqinr::write.fasta(sequences = all_copies_final, names(all_copies_final),file.out="All_copies_final.fasta")
 
 ## Remove shared gaps in the final gene copies
 DNAbin <- Biostrings::readDNAStringSet("All_copies_final.fasta")
-seqinr::write.fasta(sequences = lapply(1:length(DNAbin), function(x) paste0(c(as.character(DNAbin[x][[1]]), as.character(rep("-",max(Biostrings::width(DNAbin))-Biostrings::width(DNAbin)[x]))), collapse='')),
+longest_seq <- max(as.numeric(lapply(1:length(DNAbin), function(x) length(DNAbin[[x]]))))
+seqinr::write.fasta(sequences = lapply(1:length(DNAbin), function(x) paste0(c(as.character(DNAbin[x][[1]]), as.character(rep("-",longest_seq-length(DNAbin[[x]])))), collapse='')),
                     names = names(DNAbin), file.out = "All_copies_same_length_final.fasta")
 All_copies_final <- DECIPHER::RemoveGaps(Biostrings::readDNAStringSet("All_copies_same_length_final.fasta", format="fasta"),removeGaps = "common")
 Biostrings::writeXStringSet(All_copies_final, paste0(filename_short, "_assembled_", copy_number, "_gene_copies.txt"))

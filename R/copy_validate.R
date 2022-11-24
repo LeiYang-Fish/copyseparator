@@ -19,8 +19,8 @@
 #' @importFrom graphics abline hist text
 #'
 #' @importFrom beepr beep
-#' 
-#' @examples 
+#'
+#' @examples
 #' \dontrun{
 #' copy_validate("inst/extdata/Final_two_copies.fasta",2,300,1)
 #' }
