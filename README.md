@@ -1,6 +1,5 @@
 # Notes on the version
-This is the latest version - v.1.2.0. 
-A parallel version is available on request (leiyangslu@gmail.com). It can process multiple samples one after another, but use multiple CPU cores for each sample. Gene capture data should be able to be efficiently processed by the parallel version.
+This is the latest version - v.1.2.0.
 
 # How to install copyseparator?
 install.packages("copyseparator")
