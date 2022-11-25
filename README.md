@@ -3,6 +3,11 @@ This is the latest version - v.1.2.0.
 
 # How to install copyseparator?
 install.packages("copyseparator")
+
+# What is the input file format for sep_assem and copy_separate?
+The input file is a fasta file contains thousands of short reads that have been mapped to a reference. The reference and reads that are not directly mapped to the reference need to be removed after mapping.
+
+copy_separate can only handle one file a time, sep_assem, however, will process all the files in the working folder.
   
 # Example on how to run copyseparator
 https://github.com/LeiYang-Fish/copyseparator_more_examples
