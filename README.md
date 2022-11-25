@@ -40,7 +40,7 @@ Run the following to get the appropriate citation for the version you’re using
 To cite package ‘copyseparator’ in publications use:
 
   Yang L (2022). _copyseparator: Assembling Long Gene Copies from Short Read Data_. R package version
-  1.1.0, <https://CRAN.R-project.org/package=copyseparator>.
+  1.2.0, <https://CRAN.R-project.org/package=copyseparator>.
 
 A BibTeX entry for LaTeX users is
 
