@@ -3,6 +3,11 @@ This is the latest version - v.1.2.0.
 
 # How to install copyseparator?
 install.packages("copyseparator")
+
+# What is the input file format for sep_assem and copy_separate?
+The input file is a fasta file contains thousands of short reads that have been mapped to a reference. The reference and reads that are not directly mapped to the reference need to be removed after mapping.
+
+copy_separate can only handle one file a time, sep_assem, however, will process all the files in the working folder.
   
 # Example on how to run copyseparator
 https://github.com/LeiYang-Fish/copyseparator_more_examples
@@ -40,7 +45,7 @@ Run the following to get the appropriate citation for the version you’re using
 To cite package ‘copyseparator’ in publications use:
 
   Yang L (2022). _copyseparator: Assembling Long Gene Copies from Short Read Data_. R package version
-  1.1.0, <https://CRAN.R-project.org/package=copyseparator>.
+  1.2.0, <https://CRAN.R-project.org/package=copyseparator>.
 
 A BibTeX entry for LaTeX users is
 
