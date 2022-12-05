@@ -2,6 +2,7 @@
 This is the latest version - v.1.2.0. Links to older versions can be found below:
 
 https://github.com/LeiYang-Fish/copyseparator-v1.1.0-old-version
+
 https://github.com/LeiYang-Fish/copyseparator-v1.0.0-old-version
 
 # How to install copyseparator?
