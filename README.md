@@ -9,7 +9,7 @@ https://github.com/LeiYang-Fish/copyseparator-v1.0.0-old-version
 install.packages("copyseparator")
 
 # What is the input file format for sep_assem and copy_separate?
-The input file is a fasta file contains thousands of short reads that have been mapped to a reference. The reference and reads that are not directly mapped to the reference need to be removed after mapping.
+The input file is a fasta file contains thousands of short reads that have been mapped to a reference. Reads that are not directly mapped to the reference and the reference itself need to be removed after mapping.
 
 copy_separate can only handle one file each run, sep_assem, however, will process all the fasta files in the working directory. Do not put any unrelated fasta files in the working directory.
   
