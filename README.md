@@ -31,7 +31,7 @@ Usually cannot. Those alleles are usually very similar to each other. There may 
 Theoretically, if the coverage is high and relatively even, there is no limitation on the length. In reality, however, copyseparator is usually used to separate gene copies that are several hundred to several thousand base pairs long. I have used it to successfully separate mitogenomes (~16,000 bp) of two shark species, whose reads (from gene capture, paired-end, read length 300bp) have been combined intentionally. Long-read sequencing is the better way to go for separating very long gene copies.
 
 # How to generate the input data for copyseparator?
-1. PCR amplicons --- prepare libraries --- NGS short-read sequencing
+1. PCR amplicons --- shear to desired size (e.g. ~ 500bp) if needed --- prepare libraries --- NGS short-read sequencing
 2. Target gene capture --- NGS short-read sequencing
 3. Some other ways ...
 
