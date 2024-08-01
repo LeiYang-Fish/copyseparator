@@ -24,11 +24,14 @@ Separate and assemble two or more gene copies from short-read Next-Generation Se
 # How many gene copies can copyseparator separate?
 Two or more. However, it works better when there is fewer (e.g. two) gene copies. That is because copyseparator uses clustering analyses to separate reads from different gene copies. The more the gene copies, the harder it is to separate them apart.
 
+# Can copyseparator separate the two alleles of a gene copy?
+Usually cannot. Those alleles are usually very similar to each other. There may be long runs (>300bp) of invariable sites.
+
 # What is the length of gene copies that copyseparator can separate?
 Theoretically, if the coverage is high and relatively even, there is no limitation on the length. In reality, however, copyseparator is usually used to separate gene copies that are several hundred to several thousand base pairs long. I have used it to successfully separate mitogenomes (~16,000 bp) of two shark species, whose reads (from gene capture, paired-end, read length 300bp) have been combined intentionally. Long-read sequencing is the better way to go for separating very long gene copies.
 
 # How to generate the input data for copyseparator?
-1. PCR amplicons --- prepare libraries --- NGS short-read sequencing
+1. PCR amplicons --- shear to desired size (e.g. ~ 500bp) if needed --- prepare libraries --- NGS short-read sequencing
 2. Target gene capture --- NGS short-read sequencing
 3. Some other ways ...
 
