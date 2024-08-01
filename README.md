@@ -8,6 +8,9 @@ https://github.com/LeiYang-Fish/copyseparator-v1.0.0-old-version
 # How to install copyseparator?
 install.packages("copyseparator")
 
+# How copyseparator works?
+Please check the text and figures in the folder "Copyseparator introduction".
+
 # What is the input file format for sep_assem and copy_separate?
 The input file is a fasta file contains thousands of short reads that have been mapped to a reference. Reads that are not directly mapped to the reference and the reference itself need to be removed after mapping.
 
