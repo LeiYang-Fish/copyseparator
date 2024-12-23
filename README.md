@@ -42,7 +42,7 @@ Theoretically, if the coverage is high and relatively even, there is no limitati
 Mapping to a reference can organize the short reads in order. In this way, the subsets, the picked clusters and their respective consensus sequences, and the assembled gene copy sequences can all be in the correct order.
 
 # Why the read-length has to be 250bp or longer?
-During assembling, short reads can easily result in chimeric sequences. Email me at leiyangslu@gmail.com if you really want to use copyseparator for NGS data with a read length < 250bp.
+During assembling, short reads can easily result in chimeric sequences.
 
 # How to assemble gene copies if "sep_assem" or "copy_assemble" fails?
 I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results from "copy_separate". I prefer to assemble gene copies by moving sequences around and link gene copies by eye. It just like assembling the forward and reverse sequences from Sanger sequencing. Even if you prefer to use "copy_assemble", you still need to check the alignment first. Pay special attention to the nucleotide overhangs introduced by mistake during the calculation of consensus sequences of picked clusters.
