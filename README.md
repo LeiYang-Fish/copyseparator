@@ -49,13 +49,17 @@ I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results fro
 
 # How to cite copyseparator?
 MDPI and ACS Style
+
 Yang, L.; Mayden, R.L.; Naylor, G.J.P. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology 2024, 13, 1072. https://doi.org/10.3390/biology13121072
 
 AMA Style
+
 Yang L, Mayden RL, Naylor GJP. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology. 2024; 13(12):1072. https://doi.org/10.3390/biology13121072
 
 Chicago/Turabian Style
+
 Yang, Lei, Richard L. Mayden, and Gavin J. P. Naylor. 2024. "Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae)" Biology 13, no. 12: 1072. https://doi.org/10.3390/biology13121072
 
 APA Style
+
 Yang, L., Mayden, R. L., & Naylor, G. J. P. (2024). Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology, 13(12), 1072. https://doi.org/10.3390/biology13121072
