@@ -48,24 +48,14 @@ During assembling, short reads can easily result in chimeric sequences. Email me
 I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results from "copy_separate". I prefer to assemble gene copies by moving sequences around and link gene copies by eye. It just like assembling the forward and reverse sequences from Sanger sequencing. Even if you prefer to use "copy_assemble", you still need to check the alignment first. Pay special attention to the nucleotide overhangs introduced by mistake during the calculation of consensus sequences of picked clusters.
 
 # How to cite copyseparator?
-Run the following to get the appropriate citation for the version you’re using:
+MDPI and ACS Style
+Yang, L.; Mayden, R.L.; Naylor, G.J.P. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology 2024, 13, 1072. https://doi.org/10.3390/biology13121072
 
-  citation(package = "copyseparator")
+AMA Style
+Yang L, Mayden RL, Naylor GJP. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology. 2024; 13(12):1072. https://doi.org/10.3390/biology13121072
 
-To cite package ‘copyseparator’ in publications use:
+Chicago/Turabian Style
+Yang, Lei, Richard L. Mayden, and Gavin J. P. Naylor. 2024. "Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae)" Biology 13, no. 12: 1072. https://doi.org/10.3390/biology13121072
 
-  Yang L (2022). _copyseparator: Assembling Long Gene Copies from Short Read Data_. R package version
-  1.2.0, <https://CRAN.R-project.org/package=copyseparator>.
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {copyseparator: Assembling Long Gene Copies from Short Read Data},
-    author = {Lei Yang},
-    year = {2022},
-    note = {R package version 1.2.0},
-    url = {https://CRAN.R-project.org/package=copyseparator},
-  }
-
-ATTENTION: This citation information has been auto-generated from the package DESCRIPTION file and may need
-manual editing, see ‘help("citation")’.
+APA Style
+Yang, L., Mayden, R. L., & Naylor, G. J. P. (2024). Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology, 13(12), 1072. https://doi.org/10.3390/biology13121072
