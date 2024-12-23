@@ -48,18 +48,18 @@ During assembling, short reads can easily result in chimeric sequences.
 I use SeaView (http://doua.prabi.fr/software/seaview) to examine the results from "copy_separate". I prefer to assemble gene copies by moving sequences around and link gene copies by eye. It just like assembling the forward and reverse sequences from Sanger sequencing. Even if you prefer to use "copy_assemble", you still need to check the alignment first. Pay special attention to the nucleotide overhangs introduced by mistake during the calculation of consensus sequences of picked clusters.
 
 # How to cite copyseparator?
-MDPI and ACS Style
+_MDPI and ACS Style_
 
 Yang, L.; Mayden, R.L.; Naylor, G.J.P. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology 2024, 13, 1072. https://doi.org/10.3390/biology13121072
 
-AMA Style
+_AMA Style_
 
 Yang L, Mayden RL, Naylor GJP. Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology. 2024; 13(12):1072. https://doi.org/10.3390/biology13121072
 
-Chicago/Turabian Style
+_Chicago/Turabian Style_
 
 Yang, Lei, Richard L. Mayden, and Gavin J. P. Naylor. 2024. "Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae)" Biology 13, no. 12: 1072. https://doi.org/10.3390/biology13121072
 
-APA Style
+_APA Style_
 
 Yang, L., Mayden, R. L., & Naylor, G. J. P. (2024). Phylogeny and Polyploidy Evolution of the Suckers (Teleostei: Catostomidae). Biology, 13(12), 1072. https://doi.org/10.3390/biology13121072
